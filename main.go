@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/casossat/TEMIS/midApi/routers"
+	_ "github.com/casossat/temis_monto_aceptado_crud/routers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -37,4 +37,3 @@ func main() {
 
 	beego.Run()
 }
-

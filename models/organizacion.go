@@ -5,54 +5,59 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type Dtf struct {
-	Id                        int       `orm:"column(id);pk;auto"`
-	Norma                     string    `orm:"column(norma)"`
-	NumeroNorma               string    `orm:"column(numero_norma)"`
-	FechaNorma                time.Time `orm:"column(fecha_norma);type(date)"`
-	FechaInicioVigencia       time.Time `orm:"column(fecha_inicio_vigencia);type(date)"`
-	FechaFinalizacionVigencia time.Time `orm:"column(fecha_finalizacion_vigencia);type(date);null"`
-	TasaInteres               float64   `orm:"column(tasa_interes)"`
+type Organizacion struct {
+	Id                int    `orm:"column(id);pk;auto"`
+	Nombre            string `orm:"column(nombre)"`
+	RolEntidadId      int    `orm:"column(rol_entidad_id);null"`
+	EntidadSucesoraId int    `orm:"column(entidad_sucesora_id);null"`
+	EstadoEntidad     string `orm:"column(estado_entidad)"`
+	Direccion         string `orm:"column(direccion)"`
+	Departamento      string `orm:"column(departamento);null"`
+	Ciudad            string `orm:"column(ciudad);null"`
+	CorreoElectronico string `orm:"column(correo_electronico);null"`
+	Telefono          string `orm:"column(telefono);null"`
+	Facebook          string `orm:"column(facebook);null"`
+	Twitter           string `orm:"column(twitter);null"`
+	SitioWeb          string `orm:"column(sitio_web);null"`
 }
 
-func (t *Dtf) TableName() string {
-	return "dtf"
+func (t *Organizacion) TableName() string {
+	return "organizacion"
 }
 
 func init() {
-	orm.RegisterModel(new(Dtf))
+	orm.RegisterModel(new(Organizacion))
 }
 
-// AddDtf insert a new Dtf into database and returns
+// AddOrganizacion insert a new Organizacion into database and returns
 // last inserted Id on success.
-func AddDtf(m *Dtf) (id int64, err error) {
+func AddOrganizacion(m *Organizacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetDtfById retrieves Dtf by Id. Returns error if
+// GetOrganizacionById retrieves Organizacion by Id. Returns error if
 // Id doesn't exist
-func GetDtfById(id int) (v *Dtf, err error) {
+func GetOrganizacionById(id int) (v *Organizacion, err error) {
 	o := orm.NewOrm()
-	v = &Dtf{Id: id}
+	v = &Organizacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllDtf retrieves all Dtf matches certain condition. Returns empty list if
+// GetAllOrganizacion retrieves all Organizacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllDtf(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllOrganizacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Dtf))
+	qs := o.QueryTable(new(Organizacion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +107,7 @@ func GetAllDtf(query map[string]string, fields []string, sortby []string, order 
 		}
 	}
 
-	var l []Dtf
+	var l []Organizacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +130,11 @@ func GetAllDtf(query map[string]string, fields []string, sortby []string, order 
 	return nil, err
 }
 
-// UpdateDtf updates Dtf by Id and returns error if
+// UpdateOrganizacion updates Organizacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateDtfById(m *Dtf) (err error) {
+func UpdateOrganizacionById(m *Organizacion) (err error) {
 	o := orm.NewOrm()
-	v := Dtf{Id: m.Id}
+	v := Organizacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +145,15 @@ func UpdateDtfById(m *Dtf) (err error) {
 	return
 }
 
-// DeleteDtf deletes Dtf by Id and returns error if
+// DeleteOrganizacion deletes Organizacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteDtf(id int) (err error) {
+func DeleteOrganizacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := Dtf{Id: id}
+	v := Organizacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Dtf{Id: id}); err == nil {
+		if num, err = o.Delete(&Organizacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

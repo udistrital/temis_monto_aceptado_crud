@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"github.com/casossat/TEMIS/midApi/controllers"
+	"github.com/casossat/temis_monto_aceptado_crud/controllers"
 
 	"github.com/astaxie/beego"
 )
@@ -16,15 +16,9 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		beego.NSNamespace("/registrar_monto_aceptado_por_cobrar",
+		beego.NSNamespace("/rol_entidad",
 			beego.NSInclude(
-				&controllers.RegistrarMontoAceptadoPorCobrarController{},
-			),
-		),
-
-		beego.NSNamespace("/registrar_recaudo",
-			beego.NSInclude(
-				&controllers.RegistrarRecaudoController{},
+				&controllers.RolEntidadController{},
 			),
 		),
 
@@ -46,6 +40,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/indice_precio_consumidor",
+			beego.NSInclude(
+				&controllers.IndicePrecioConsumidorController{},
+			),
+		),
+
 		beego.NSNamespace("/usuario",
 			beego.NSInclude(
 				&controllers.UsuarioController{},
@@ -58,21 +58,21 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/dtf",
+		beego.NSNamespace("/registrar_monto_aceptado_por_cobrar",
 			beego.NSInclude(
-				&controllers.DtfController{},
+				&controllers.RegistrarMontoAceptadoPorCobrarController{},
 			),
 		),
 
-		beego.NSNamespace("/indice_precio_consumidor",
+		beego.NSNamespace("/registrar_recaudo",
 			beego.NSInclude(
-				&controllers.IndicePrecioConsumidorController{},
+				&controllers.RegistrarRecaudoController{},
 			),
 		),
 
-		beego.NSNamespace("/rol_entidad",
+		beego.NSNamespace("/organizacion",
 			beego.NSInclude(
-				&controllers.RolEntidadController{},
+				&controllers.OrganizacionController{},
 			),
 		),
 	)
