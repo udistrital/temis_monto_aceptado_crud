@@ -5,14 +5,15 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type IndicePrecioConsumidor struct {
-	Id          int     `orm:"column(id);pk;auto"`
-	AñoVigencia int     `orm:"column(año_vigencia)"`
-	IndiceIpc   float64 `orm:"column(indice_ipc)"`
+	Id          int       `orm:"column(id);pk;auto"`
+	AnoVigencia time.Time `orm:"column(ano_vigencia);type(date)"`
+	IndiceIpc   float64   `orm:"column(indice_ipc)"`
 }
 
 func (t *IndicePrecioConsumidor) TableName() string {

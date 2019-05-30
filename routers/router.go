@@ -40,9 +40,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/indice_precio_consumidor",
+		beego.NSNamespace("/dtf",
 			beego.NSInclude(
-				&controllers.IndicePrecioConsumidorController{},
+				&controllers.DtfController{},
 			),
 		),
 
@@ -73,6 +73,12 @@ func init() {
 		beego.NSNamespace("/organizacion",
 			beego.NSInclude(
 				&controllers.OrganizacionController{},
+			),
+		),
+
+		beego.NSNamespace("/indice_precio_consumidor",
+			beego.NSInclude(
+				&controllers.IndicePrecioConsumidorController{},
 			),
 		),
 	)

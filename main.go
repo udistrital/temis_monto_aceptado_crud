@@ -9,10 +9,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func init() {
-	orm.RegisterDataBase("default", "postgres", "postgres://onep:ea4647ec89@127.0.0.1/temis?sslmode=disable")
-}
-
 func main() {
 	orm.RegisterDataBase("default", "postgres", beego.AppConfig.String("sqlconn"))
 	orm.Debug = true

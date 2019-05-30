@@ -15,7 +15,7 @@ type Organizacion struct {
 	RolEntidadId      int    `orm:"column(rol_entidad_id);null"`
 	EntidadSucesoraId int    `orm:"column(entidad_sucesora_id);null"`
 	EstadoEntidad     string `orm:"column(estado_entidad)"`
-	Direccion         string `orm:"column(direccion)"`
+	Direccion         string `orm:"column(direccion);null"`
 	Departamento      string `orm:"column(departamento);null"`
 	Ciudad            string `orm:"column(ciudad);null"`
 	CorreoElectronico string `orm:"column(correo_electronico);null"`
@@ -23,6 +23,7 @@ type Organizacion struct {
 	Facebook          string `orm:"column(facebook);null"`
 	Twitter           string `orm:"column(twitter);null"`
 	SitioWeb          string `orm:"column(sitio_web);null"`
+	Nit               string `orm:"column(nit);null"`
 }
 
 func (t *Organizacion) TableName() string {
