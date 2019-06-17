@@ -7,7 +7,7 @@ El proyecto está escrito en lenguaje Go, generado mediante el <a href="https://
 
 # Modelo de datos
 
-![alt text](https://ibb.co/dBfgPSd)
+![image](https://drive.google.com/uc?export=view&id=1r3Bs-4AodOPHIuEoUXkmIWt0v_mFk17e)
 
 # Requerimientos
 
@@ -47,6 +47,7 @@ Go version >= 1.8.
 
 <summary><h2> Ejecución </h2></summary>
 <details>
+
 
   Ubicado en la raíz del proyecto
 
