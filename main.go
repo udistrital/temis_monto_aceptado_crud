@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/casossat/temis_monto_aceptado_crud/routers"
+	_ "github.com/temis_monto_aceptado_crud/routers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

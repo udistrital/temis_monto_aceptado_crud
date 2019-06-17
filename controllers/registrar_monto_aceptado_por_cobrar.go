@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/casossat/temis_monto_aceptado_crud/models"
+	"github.com/temis_monto_aceptado_crud/models"
 	"strconv"
 	"strings"
 
